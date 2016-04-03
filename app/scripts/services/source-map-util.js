@@ -205,7 +205,7 @@
                   $.ajax(sourceFileUlr).then(function(content) {
                     _cache[url]._file=content;
                     def1.resolve(true);
-                    _cache[url]._syntaxTree = window.esprima.parse(_cache[url]._file,{loc:true,range:true});
+                    _cache[url]._syntaxTree = window.esprima.parse(_cache[url]._file,{loc:true});
                     loc.name=_findFunctionName( _cache[url]._syntaxTree,loc.line, loc.column);
                     _stack=new window.StackFrame(loc.name, stack.args, loc.source, loc.line, loc.column);
                     def.resolve(_stack);
