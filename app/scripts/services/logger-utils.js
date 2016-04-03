@@ -2,10 +2,39 @@
 
 /**
  * @ngdoc service
- * @name ui.logger.loggerUtils
+ * @name ui.logger.logUtils
  * @description
  * # loggerUtils
  * Service in the ui.logger.
+ */
+/**
+ * @ngdoc method
+ * @name $defaultLogger
+ * @methodOf ui.logger.logUtils
+ * @description
+ * Used to assign an instance of $log to service object, which can be used for console logging .
+ * @param {object} logger instance of logging service
+ * @returns {Object} returns logger instance
+ */
+/**
+ * @ngdoc method
+ * @name isEnabled
+ * @methodOf ui.logger.logUtils
+ * @description
+ * Checks if a particular logger level is enabled or not.
+ * @param {object} logger instance of logger.
+ * @param {string} type the logger level which is to checked
+ * @returns {Boolean} returns true if logger level is enabled
+ */
+/**
+ * @ngdoc method
+ * @name getLogData
+ * @methodOf ui.logger.logUtils
+ * @description
+ * Used to generate the log data corresponding to error or exceptions.
+ * @param {object} logger instance of logger.
+ * @param {object} exception the exception object corresponding to which log are to be generated
+ * @returns {Object} returns log information object containing name,time,url,message and stackframe corresponding to exception.
  */
 angular.module('ui.logger')
   .service('logUtils', function (StackTrace, $window,loggerLevels,$injector,sourceMapUtil) {

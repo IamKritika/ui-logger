@@ -5,7 +5,8 @@
  * @name ui.logger.decorator:Log
  * @description
  * # Log
- * Decorator of the ui.logger
+ * Decorator for the angularJS $log (service for logging). The service decorator intercepts the
+ * creation of a $log service, allowing it to modify the behavior of the inbuilt service methods (log(),info(),warn(),error(),debug()).
  */
 angular.module('ui.logger')
   .config(function ($provide) {

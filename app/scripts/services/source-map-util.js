@@ -1,12 +1,41 @@
 'use strict';
-
 /**
  * @ngdoc service
  * @name ui.logger.sourceMapUtil
  * @description
  * # sourceMapUtil
- * Factory in the ui.logger.
+ *  Factory in the ui.logger.
  */
+
+/**
+ * @ngdoc service
+ * @name ui.logger.sourceMapUtilProvider
+ * @description
+ * Used to do initial configuration for the sourceMapUtil Factory
+ */
+/**
+ * @ngdoc method
+ * @name configure
+ * @methodOf ui.logger.sourceMapUtilProvider
+ * @description
+ * Configures options required by the library source-map
+ * @param {object} options Object which contains the options to be passed to the library
+ * @param {Boolean} options.offline (optional) Set to true to prevent all network requests (default: true)
+ */
+/**
+ * @ngdoc method
+ * @name getOriginalLocation
+ * @methodOf ui.logger.sourceMapUtil
+ * @description
+ * Used to get original location and names of the function where exception occurred.(Helpful in case of minified files)
+ * @param {object} stack element of the stackFrame array generated for a particular exception.
+ * @param {String} stack.fileName name of the file in which error occured.
+ * @param {Number} stack.lineNumber lineNumber in which error occured.
+ * @param {Number} stack.columnNumber columnNumber in which error occured.
+ * @returns {Object} returns log information object containing original function name,line number,column number,source file name
+ * where the error occured.
+ */
+
 (function(){
   function findNode(nodeList,lineNumber,ColumnNumber){
     var first = 0;
@@ -176,7 +205,7 @@
                   $.ajax(sourceFileUlr).then(function(content) {
                     _cache[url]._file=content;
                     def1.resolve(true);
-                    _cache[url]._syntaxTree = window.esprima.parse(_cache[url]._file,{loc:true});
+                    _cache[url]._syntaxTree = window.esprima.parse(_cache[url]._file,{loc:true,range:true});
                     loc.name=_findFunctionName( _cache[url]._syntaxTree,loc.line, loc.column);
                     _stack=new window.StackFrame(loc.name, stack.args, loc.source, loc.line, loc.column);
                     def.resolve(_stack);

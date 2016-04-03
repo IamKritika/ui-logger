@@ -17,6 +17,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-angular-architecture-graph');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-jsinspect');
+  grunt.loadNpmTasks('grunt-ngdocs');
 
   grunt.loadNpmTasks('grunt-istanbul-coverage');
   // Configurable paths for the application
@@ -184,6 +185,23 @@ module.exports = function (grunt) {
           jshintrc: 'test/.jshintrc'
         },
         src: ['test/spec/{,*/}*.js']
+      }
+    },
+    ngdocs: {
+      options: {
+        dest: 'docs',
+        scripts: ['<%= yeoman.dist %>/scripts/vendor.js','<%= yeoman.dist %>/scripts/ui.logger.js','bower_components/angular-mocks/angular-mocks.js'],
+        html5Mode: false,
+        startPage: '/api/logger',
+        title:" Docs",
+        inlinePartials: true,
+        bestMatch: true,
+        sourceLink:true,
+        editLink:true,editExample:true
+      },
+      api: {
+        src: ['<%= yeoman.app %>/**/*.js'],
+        title: 'API Documentation'
       }
     },
 
@@ -471,7 +489,8 @@ module.exports = function (grunt) {
     'uglify',
     //'filerev',
     'usemin',
-    'htmlmin'//,
+    'htmlmin',
+    'ngdocs'
     //'angular_architecture_graph'
   ]);
 

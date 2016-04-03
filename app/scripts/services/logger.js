@@ -5,8 +5,72 @@
  * @name ui.logger.logger
  * @description
  * # logger
- * Provider in the ui.logger.
+ * Used to provide the Logger instance.
  */
+
+/**
+ * @ngdoc service
+ * @name ui.logger.loggerProvider
+ * @description
+ * Used to do initial configuration for the logger Service.
+ */
+
+/**
+ * @ngdoc method
+ * @name SetLevel
+ * @methodOf ui.logger.loggerProvider
+ * @description
+ * Used to set the logger level
+ * @param {string} l name of the logging level to be configured. Acceptable values are - 'debug','info','warn','log','error'.
+ */
+
+/**
+ * @ngdoc method
+ * @name SetInterceptor
+ * @methodOf ui.logger.loggerProvider
+ * @description
+ * Used to set interceptor i.e. a callback function which will be called every time log data is generated.
+ * @param {function} cb callback function to be called every time log data is generated.
+ */
+
+/**
+ * @ngdoc method
+ * @name DisableConsoleLogging
+ * @methodOf ui.logger.loggerProvider
+ * @description
+ * Used to disable the writing of log data on console.
+ * @param {boolean} flag Used to enable or disable console logging.(default - false)
+ */
+
+/**
+ * @ngdoc method
+ * @name SetDefaultName
+ * @methodOf ui.logger.loggerProvider
+ * @description
+ * Used to set the default name for the logger instance.
+ * @param {String} name default name to be set for all the logger instances (default value - 'default')
+ */
+
+/**
+ * @ngdoc method
+ * @name getInstance
+ * @methodOf ui.logger.logger
+ * @description
+ * Used to get logger instance.
+ * @param {String} name name to be set for the logger instance(default value - 'default')
+
+ */
+/**
+ * @ngdoc method
+ * @name setLog
+ * @methodOf ui.logger.logger
+ * @description
+ * Used to assign an instance of $log to service object, which can be used for console logging if required by user .
+ * @param {object} $log instance of logging service.
+ */
+
+
+
 (function(){
   function SetLevel(l) {
     this.level=l;
